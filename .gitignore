@@ -24,6 +24,7 @@ hs_err_pid*
 #IntelliJ
 .idea
 .idea/workspace.xml
+target
 
 #nodejs
 node_modules
