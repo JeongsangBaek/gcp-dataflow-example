@@ -28,7 +28,10 @@ import com.google.cloud.dataflow.sdk.transforms.ParDo;
 import com.google.cloud.dataflow.sdk.values.PCollection;
 import com.my.google.dataflow.bigquery.CSVToRowConverter;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -56,10 +59,19 @@ public class StarterPipeline {
   public static void main(String[] args) {
 		PipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation().create();
 	    Pipeline p = Pipeline.create(options);
+        final Calendar cal = Calendar.getInstance();
 
-	    LOG.debug("Start data processing");
+        //get yesterday data
+        //cal.add(Calendar.DATE, -1);
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String yesterdayDate = dateFormat.format(cal.getTime());
+
+        LOG.debug("Start data processing");
+        String filePattern = String.format("gs://gdfp-dummy-data-store/NetworkRequests_1_%s_*.csv", yesterdayDate);
+        LOG.debug("Processing files: " + filePattern);
+
 	    //Read data from GCS
-	    PCollection<String> lines = p.apply(TextIO.Read.from("gs://gdfp-data-store/NetworkRequests_1_20171118_05.csv"));
+	    PCollection<String> lines = p.apply(TextIO.Read.from(filePattern));
 	    
 	    //Make TableRow
 	    PCollection<TableRow> rows = lines.apply(ParDo.of(new CSVToRowConverter()));
@@ -68,7 +80,7 @@ public class StarterPipeline {
 	    fields.add(new TableFieldSchema().setName("time").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("time_u_sec_2").setType("INTEGER"));
 	    fields.add(new TableFieldSchema().setName("key_part").setType("STRING"));
-	    fields.add(new TableFieldSchema().setName("user_id").setType("INTEGER"));
+	    fields.add(new TableFieldSchema().setName("user_id").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("ad_unit_id").setType("INTEGER"));
 	    fields.add(new TableFieldSchema().setName("custom_targeting").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("country").setType("STRING"));
