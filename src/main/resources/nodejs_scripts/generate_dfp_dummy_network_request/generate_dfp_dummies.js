@@ -11,7 +11,6 @@ function generateDummyByRwc() {
         {weight:1, id:(moment().add(-2, 'days'))},
         {weight:1, id:(moment().add(-5, 'days'))}
     ]);
-    console.log(`obj: ${JSON.stringify(momentObj)}`);
     const userId = Math.floor(Math.random() * 5000);
     const adUnitId = Math.floor(Math.random() * 10000000);
     const ct = rwc([
