@@ -107,7 +107,6 @@ public class StarterPipeline {
 	    fields.add(new TableFieldSchema().setName("anonymous").setType("BOOLEAN"));
 	    fields.add(new TableFieldSchema().setName("arrival_time").setType("TIMESTAMP"));	//added by converter
 
-	    
 	    TableSchema schema = new TableSchema().setFields(fields);
 	    rows.apply(BigQueryIO.Write
 	    		.named("Write")
