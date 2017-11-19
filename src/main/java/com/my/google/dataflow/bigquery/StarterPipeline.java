@@ -77,7 +77,7 @@ public class StarterPipeline {
 	    PCollection<TableRow> rows = lines.apply(ParDo.of(new CSVToRowConverter()));
 	    
 	    List<TableFieldSchema> fields = new ArrayList<>();
-	    fields.add(new TableFieldSchema().setName("time").setType("STRING"));
+	    fields.add(new TableFieldSchema().setName("time").setType("TIMESTAMP"));
 	    fields.add(new TableFieldSchema().setName("time_u_sec_2").setType("INTEGER"));
 	    fields.add(new TableFieldSchema().setName("key_part").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("user_id").setType("STRING"));
