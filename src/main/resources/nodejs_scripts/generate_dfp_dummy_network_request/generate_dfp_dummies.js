@@ -6,10 +6,10 @@ const util = require('util');
 
 function generateDummyByRwc() {
     const momentObj = rwc([
-        {weight:7, id:(moment())},
-        {weight:1, id:(moment().add(-1, 'days'))},
-        {weight:1, id:(moment().add(-2, 'days'))},
-        {weight:1, id:(moment().add(-5, 'days'))}
+        {weight:7, id:(moment().format('YYYY-MM-DD HH:mm:ss'))},
+        {weight:1, id:(moment().add(-1, 'days').format('YYYY-MM-DD HH:mm:ss'))},
+        {weight:1, id:(moment().add(-2, 'days').format('YYYY-MM-DD HH:mm:ss'))},
+        {weight:1, id:(moment().add(-4, 'days').format('YYYY-MM-DD HH:mm:ss'))}
     ]);
     const userId = Math.floor(Math.random() * 5000);
     const adUnitId = Math.floor(Math.random() * 10000000);
@@ -107,7 +107,7 @@ function generateDummyByRwc() {
     const anonymous = 'false';
 
     const dummyJsonObj = {
-        time:moment(momentObj).format('YYYY-MM-DD-HH:mm:ss'),
+        time:momentObj,
         time_u_sec_2:moment(momentObj).unix(),
         key_part:hashids.encode(moment(momentObj).unix()),
         user_id:`user_${userId}`,
