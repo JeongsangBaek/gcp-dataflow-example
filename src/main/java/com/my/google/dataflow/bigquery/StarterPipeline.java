@@ -62,7 +62,7 @@ public class StarterPipeline {
         final Calendar cal = Calendar.getInstance();
 
         //get yesterday data
-        cal.add(Calendar.DATE, -1);
+//        cal.add(Calendar.DATE, -1);
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         String yesterdayDate = dateFormat.format(cal.getTime());
 
