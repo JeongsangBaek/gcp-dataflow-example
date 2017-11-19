@@ -28,8 +28,13 @@ if (require.main === module) {
         }
         writer.end();
 
+        //upload to google cloud
         await storage.bucket(bucketName).upload(filename);
         util.log(`Finished upload ${filename} to ${bucketName}`);
+
+        //remove file
+        fs.unlinkSync(filename);
+        util.log(`Finished unlink local file ${filename}`);
     }).catch((err) => {
         util.log(`! Exception caught: ${err.stack}`);
     });
