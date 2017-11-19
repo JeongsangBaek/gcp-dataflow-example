@@ -45,11 +45,11 @@ public class CSVToRowConverter extends DoFn<String, TableRow> {
 		output.set("postal_code_id", split[22]);
 		output.set("bandwidth_id", split[23]);
 		output.set("audience_segment_ids", split[24]);
-		output.set("requestd_ad_unit_sizes", split[25]);
+		output.set("requested_ad_unit_sizes", split[25]);
 		output.set("mobile_device", split[26]);
 		output.set("os_version", split[27]);
 		output.set("mobile_capability", split[28]);
-		output.set("mobile_career", split[29]);
+		output.set("mobile_carrier", split[29]);
 		output.set("bandwidth_group_id", split[30]);
 		output.set("publisher_provided_id", split[31]);
 		output.set("video_position", split[32]);
