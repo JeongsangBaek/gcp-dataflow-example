@@ -90,11 +90,11 @@ public class StarterPipeline {
 	    fields.add(new TableFieldSchema().setName("postal_code_id").setType("INTEGER"));
 	    fields.add(new TableFieldSchema().setName("bandwidth_id").setType("INTEGER"));
 	    fields.add(new TableFieldSchema().setName("audience_segment_ids").setType("STRING"));
-	    fields.add(new TableFieldSchema().setName("requestd_ad_unit_sizes").setType("STRING"));
+	    fields.add(new TableFieldSchema().setName("requested_ad_unit_sizes").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("mobile_device").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("os_version").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("mobile_capability").setType("STRING"));
-	    fields.add(new TableFieldSchema().setName("mobile_career").setType("STRING"));
+	    fields.add(new TableFieldSchema().setName("mobile_carrier").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("bandwidth_group_id").setType("INTEGER"));
 	    fields.add(new TableFieldSchema().setName("publisher_provided_id").setType("STRING"));
 	    fields.add(new TableFieldSchema().setName("video_position").setType("INTEGER"));
@@ -110,7 +110,7 @@ public class StarterPipeline {
 	    TableSchema schema = new TableSchema().setFields(fields);
 	    rows.apply(BigQueryIO.Write
 	    		.named("Write")
-	    		.to("dfp-data-analysis-186405:dfp_data.network_request_1")
+	    		.to("dfp-data-analysis-186405:dfp_data.network_request")
 	    		.withSchema(schema)
 	    		.withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND)
 	    		.withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED)
