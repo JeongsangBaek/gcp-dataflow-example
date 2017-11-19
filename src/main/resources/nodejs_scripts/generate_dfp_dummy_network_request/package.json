@@ -1,0 +1,17 @@
+{
+  "name": "generate_dfp_dummy_network_request",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate_dfp_dummy_network_request.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeongsang Baek",
+  "license": "ISC",
+  "dependencies": {
+    "co": "^4.6.0",
+    "hashids": "^1.1.4",
+    "moment": "^2.19.2",
+    "random-weighted-choice": "^0.1.3"
+  }
+}
