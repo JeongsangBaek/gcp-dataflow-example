@@ -2,7 +2,6 @@ const moment = require('moment');
 const rwc = require('random-weighted-choice');
 const Hashids = require('hashids');
 const hashids = new Hashids();
-const util = require('util');
 
 function generateDummyByRwc() {
     const momentObj = rwc([
