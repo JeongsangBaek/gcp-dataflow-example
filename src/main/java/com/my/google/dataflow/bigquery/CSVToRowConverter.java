@@ -16,6 +16,7 @@ public class CSVToRowConverter extends DoFn<String, TableRow> {
 		String[] split = c.element().split(",");
 		//skip the header
 		if (split[0].equals("time")) return;
+		if (split.length < 40) return;
 		
 		ZonedDateTime utc = ZonedDateTime.now(ZoneOffset.UTC);
 	
